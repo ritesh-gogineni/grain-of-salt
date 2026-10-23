@@ -41,6 +41,22 @@ npm run dev        # http://localhost:5173
 npm run build      # static output in web/dist, deploy anywhere
 ```
 
+## Deploy
+
+The site is published with GitHub Pages at https://ritesh-gogineni.github.io/grain-of-salt/ from the `gh-pages` branch. Vite is configured with `base: '/grain-of-salt/'` for that path (set `VITE_BASE=/` to build for a root domain).
+
+To publish a new build:
+
+```bash
+cd web && npm run build && cd ..
+git worktree add --detach /tmp/gos-pages
+cd /tmp/gos-pages && git checkout --orphan gh-pages && git rm -rfq .
+cp -r ../path/to/pollster/web/dist/. . && touch .nojekyll
+git add -A && git commit -m "Deploy site build" && git push -f origin gh-pages
+```
+
+`.github/workflows/pages.yml` holds an Actions workflow that does the same on every push to `main`. Pushing it needs a token with the `workflow` scope (`gh auth refresh -h github.com -s workflow`), after which Pages can be switched to "GitHub Actions" as its source.
+
 ## Method, briefly
 
 - History: FiveThirtyEight's pollster-ratings archive (1998–2022) plus 2024 rebuilt from their archived poll
