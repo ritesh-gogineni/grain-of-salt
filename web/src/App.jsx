@@ -6,7 +6,7 @@ import RaceTable from './components/RaceTable.jsx'
 import ReportCard from './components/ReportCard.jsx'
 import Method from './components/Method.jsx'
 
-const DARK_BG = '#17150f', LIGHT_BG = '#f4efe6'
+const DARK_BG = '#0b1326', LIGHT_BG = '#ffffff'
 const raceKeys = new Set(DATA.races.map((r) => r.key))
 
 /* URL shape: #/[method[/section]]?p=<pollster>&m=<mode>&s=<scope>&r=<open race>&f=polled */
