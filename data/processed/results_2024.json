@@ -1,0 +1,2078 @@
+[
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "California",
+  "special": true,
+  "cands": [
+   {
+    "name": "Adam Schiff",
+    "party": "DEM",
+    "pct": 58.75
+   },
+   {
+    "name": "Steve Garvey",
+    "party": "REP",
+    "pct": 41.25
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Nebraska",
+  "special": true,
+  "cands": [
+   {
+    "name": "Pete Ricketts",
+    "party": "REP",
+    "pct": 62.64
+   },
+   {
+    "name": "Preston Love Jr.",
+    "party": "DEM",
+    "pct": 37.36
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Arizona",
+  "special": false,
+  "cands": [
+   {
+    "name": "Ruben Gallego",
+    "party": "DEM",
+    "pct": 50.1
+   },
+   {
+    "name": "Kari Lake",
+    "party": "REP",
+    "pct": 47.7
+   },
+   {
+    "name": "Eduardo Heredia-Quintana",
+    "party": "GRN",
+    "pct": 2.3
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Connecticut",
+  "special": false,
+  "cands": [
+   {
+    "name": "Chris Murphy",
+    "party": "DEM",
+    "pct": 58.58
+   },
+   {
+    "name": "Matthew Corey",
+    "party": "REP",
+    "pct": 39.8
+   },
+   {
+    "name": "Robert F. Hyde",
+    "party": "IND",
+    "pct": 0.9
+   },
+   {
+    "name": "Justin Paglino",
+    "party": "GRN",
+    "pct": 0.8
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Delaware",
+  "special": false,
+  "cands": [
+   {
+    "name": "Lisa Blunt Rochester",
+    "party": "DEM",
+    "pct": 56.6
+   },
+   {
+    "name": "Eric Hansen",
+    "party": "REP",
+    "pct": 39.5
+   },
+   {
+    "name": "Michael Katz",
+    "party": "IND",
+    "pct": 3.9
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Florida",
+  "special": false,
+  "cands": [
+   {
+    "name": "Rick Scott",
+    "party": "REP",
+    "pct": 55.6
+   },
+   {
+    "name": "Debbie Mucarsel-Powell",
+    "party": "DEM",
+    "pct": 42.8
+   },
+   {
+    "name": "Ben Everidge",
+    "party": "IND",
+    "pct": 0.6
+   },
+   {
+    "name": "Feena Bonoan",
+    "party": "LIB",
+    "pct": 0.5
+   },
+   {
+    "name": "Tuan Nguyen",
+    "party": "IND",
+    "pct": 0.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Hawaii",
+  "special": false,
+  "cands": [
+   {
+    "name": "Mazie Hirono",
+    "party": "DEM",
+    "pct": 64.6
+   },
+   {
+    "name": "Bob McDermott",
+    "party": "REP",
+    "pct": 31.9
+   },
+   {
+    "name": "Shelby Billionaire",
+    "party": "OTH",
+    "pct": 1.8
+   },
+   {
+    "name": "Emma Pohlman",
+    "party": "GRN",
+    "pct": 1.7
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Indiana",
+  "special": false,
+  "cands": [
+   {
+    "name": "Jim Banks",
+    "party": "REP",
+    "pct": 58.6
+   },
+   {
+    "name": "Valerie McCray",
+    "party": "DEM",
+    "pct": 38.8
+   },
+   {
+    "name": "Andy Horning",
+    "party": "LIB",
+    "pct": 2.6
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Maine",
+  "special": false,
+  "cands": [
+   {
+    "name": "Angus King",
+    "party": "IND",
+    "pct": 52.1
+   },
+   {
+    "name": "Demitroula Kouzounas",
+    "party": "REP",
+    "pct": 34.6
+   },
+   {
+    "name": "David Costello",
+    "party": "DEM",
+    "pct": 10.8
+   },
+   {
+    "name": "Jason Cherry",
+    "party": "IND",
+    "pct": 2.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Maryland",
+  "special": false,
+  "cands": [
+   {
+    "name": "Angela Alsobrooks",
+    "party": "DEM",
+    "pct": 54.6
+   },
+   {
+    "name": "Larry Hogan",
+    "party": "REP",
+    "pct": 42.8
+   },
+   {
+    "name": "Mike Scott",
+    "party": "LIB",
+    "pct": 2.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Massachusetts",
+  "special": false,
+  "cands": [
+   {
+    "name": "Elizabeth Warren",
+    "party": "DEM",
+    "pct": 59.8
+   },
+   {
+    "name": "John Deaton",
+    "party": "REP",
+    "pct": 40.0
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Michigan",
+  "special": false,
+  "cands": [
+   {
+    "name": "Elissa Slotkin",
+    "party": "DEM",
+    "pct": 48.6
+   },
+   {
+    "name": "Mike Rogers",
+    "party": "REP",
+    "pct": 48.3
+   },
+   {
+    "name": "Joseph Solis-Mullen",
+    "party": "LIB",
+    "pct": 1.0
+   },
+   {
+    "name": "Douglas Marsh",
+    "party": "GRN",
+    "pct": 1.0
+   },
+   {
+    "name": "Dave Stein",
+    "party": "OTH",
+    "pct": 0.7
+   },
+   {
+    "name": "Doug Dern",
+    "party": "OTH",
+    "pct": 0.3
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Minnesota",
+  "special": false,
+  "cands": [
+   {
+    "name": "Amy Klobuchar",
+    "party": "OTH",
+    "pct": 56.2
+   },
+   {
+    "name": "Royce White",
+    "party": "REP",
+    "pct": 40.5
+   },
+   {
+    "name": "Rebecca Whiting",
+    "party": "LIB",
+    "pct": 1.7
+   },
+   {
+    "name": "Joyce Lacey",
+    "party": "OTH",
+    "pct": 1.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Mississippi",
+  "special": false,
+  "cands": [
+   {
+    "name": "Roger Wicker",
+    "party": "REP",
+    "pct": 62.8
+   },
+   {
+    "name": "Ty Pinkins",
+    "party": "DEM",
+    "pct": 36.6
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Missouri",
+  "special": false,
+  "cands": [
+   {
+    "name": "Josh Hawley",
+    "party": "REP",
+    "pct": 55.6
+   },
+   {
+    "name": "Lucas Kunce",
+    "party": "DEM",
+    "pct": 41.8
+   },
+   {
+    "name": "W. C. Young",
+    "party": "LIB",
+    "pct": 1.2
+   },
+   {
+    "name": "Jared Young",
+    "party": "IND",
+    "pct": 0.7
+   },
+   {
+    "name": "Nathan Kline",
+    "party": "GRN",
+    "pct": 0.7
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Montana",
+  "special": false,
+  "cands": [
+   {
+    "name": "Tim Sheehy",
+    "party": "REP",
+    "pct": 52.6
+   },
+   {
+    "name": "Jon Tester",
+    "party": "DEM",
+    "pct": 45.5
+   },
+   {
+    "name": "Sid Daoud",
+    "party": "LIB",
+    "pct": 1.2
+   },
+   {
+    "name": "Michael Downey",
+    "party": "GRN",
+    "pct": 0.7
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Nebraska",
+  "special": false,
+  "cands": [
+   {
+    "name": "Deb Fischer",
+    "party": "REP",
+    "pct": 53.19
+   },
+   {
+    "name": "Dan Osborn",
+    "party": "IND",
+    "pct": 46.47
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Nevada",
+  "special": false,
+  "cands": [
+   {
+    "name": "Jacky Rosen",
+    "party": "DEM",
+    "pct": 47.9
+   },
+   {
+    "name": "Sam Brown",
+    "party": "REP",
+    "pct": 46.2
+   },
+   {
+    "name": "Janine Hansen",
+    "party": "IND",
+    "pct": 1.5
+   },
+   {
+    "name": "Christopher Cunningham",
+    "party": "LIB",
+    "pct": 1.4
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "New Jersey",
+  "special": false,
+  "cands": [
+   {
+    "name": "Andy Kim",
+    "party": "DEM",
+    "pct": 53.6
+   },
+   {
+    "name": "Curtis Bashaw",
+    "party": "REP",
+    "pct": 44.0
+   },
+   {
+    "name": "Christina Khalil",
+    "party": "GRN",
+    "pct": 1.1
+   },
+   {
+    "name": "Ken Kaplan",
+    "party": "LIB",
+    "pct": 0.6
+   },
+   {
+    "name": "Patricia Mooneyham",
+    "party": "IND",
+    "pct": 0.4
+   },
+   {
+    "name": "Joanne Kuniansky",
+    "party": "OTH",
+    "pct": 0.2
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "New Mexico",
+  "special": false,
+  "cands": [
+   {
+    "name": "Martin Heinrich",
+    "party": "DEM",
+    "pct": 55.1
+   },
+   {
+    "name": "Nella Domenici",
+    "party": "REP",
+    "pct": 44.9
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "New York",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kirsten Gillibrand",
+    "party": "DEM",
+    "pct": 58.5
+   },
+   {
+    "name": "Mike Sapraicone",
+    "party": "REP",
+    "pct": 41.0
+   },
+   {
+    "name": "Diane Sare",
+    "party": "OTH",
+    "pct": 0.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "North Dakota",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kevin Cramer",
+    "party": "REP",
+    "pct": 66.5
+   },
+   {
+    "name": "Katrina Christiansen",
+    "party": "DEM",
+    "pct": 33.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Ohio",
+  "special": false,
+  "cands": [
+   {
+    "name": "Bernie Moreno",
+    "party": "REP",
+    "pct": 50.1
+   },
+   {
+    "name": "Sherrod Brown",
+    "party": "DEM",
+    "pct": 46.5
+   },
+   {
+    "name": "Don Kissick",
+    "party": "LIB",
+    "pct": 3.4
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Pennsylvania",
+  "special": false,
+  "cands": [
+   {
+    "name": "Dave McCormick",
+    "party": "REP",
+    "pct": 48.8
+   },
+   {
+    "name": "Bob Casey Jr.",
+    "party": "DEM",
+    "pct": 48.6
+   },
+   {
+    "name": "John Thomas",
+    "party": "LIB",
+    "pct": 1.2
+   },
+   {
+    "name": "Leila Hazou",
+    "party": "GRN",
+    "pct": 1.0
+   },
+   {
+    "name": "Marty Selker",
+    "party": "OTH",
+    "pct": 0.3
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Rhode Island",
+  "special": false,
+  "cands": [
+   {
+    "name": "Sheldon Whitehouse",
+    "party": "DEM",
+    "pct": 59.9
+   },
+   {
+    "name": "Patricia Morgan",
+    "party": "REP",
+    "pct": 40.1
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Tennessee",
+  "special": false,
+  "cands": [
+   {
+    "name": "Marsha Blackburn",
+    "party": "REP",
+    "pct": 63.8
+   },
+   {
+    "name": "Gloria Johnson",
+    "party": "DEM",
+    "pct": 34.2
+   },
+   {
+    "name": "Tharon Chandler",
+    "party": "IND",
+    "pct": 0.9
+   },
+   {
+    "name": "Pamela Moses",
+    "party": "IND",
+    "pct": 0.8
+   },
+   {
+    "name": "Hastina Robinson",
+    "party": "IND",
+    "pct": 0.3
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Texas",
+  "special": false,
+  "cands": [
+   {
+    "name": "Ted Cruz",
+    "party": "REP",
+    "pct": 53.1
+   },
+   {
+    "name": "Colin Allred",
+    "party": "DEM",
+    "pct": 44.6
+   },
+   {
+    "name": "Ted Brown",
+    "party": "LIB",
+    "pct": 2.4
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Utah",
+  "special": false,
+  "cands": [
+   {
+    "name": "John Curtis",
+    "party": "REP",
+    "pct": 62.5
+   },
+   {
+    "name": "Caroline Gleich",
+    "party": "DEM",
+    "pct": 31.7
+   },
+   {
+    "name": "Carlton Bowen",
+    "party": "IND",
+    "pct": 5.7
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Vermont",
+  "special": false,
+  "cands": [
+   {
+    "name": "Bernie Sanders",
+    "party": "IND",
+    "pct": 63.2
+   },
+   {
+    "name": "Gerald Malloy",
+    "party": "REP",
+    "pct": 32.1
+   },
+   {
+    "name": "Steve Berry",
+    "party": "IND",
+    "pct": 2.2
+   },
+   {
+    "name": "Matt Hill",
+    "party": "LIB",
+    "pct": 1.2
+   },
+   {
+    "name": "Justin Schoville",
+    "party": "OTH",
+    "pct": 0.9
+   },
+   {
+    "name": "Matt Stewart Greenstein",
+    "party": "IND",
+    "pct": 0.3
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Virginia",
+  "special": false,
+  "cands": [
+   {
+    "name": "Tim Kaine",
+    "party": "DEM",
+    "pct": 54.4
+   },
+   {
+    "name": "Hung Cao",
+    "party": "REP",
+    "pct": 45.4
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Washington",
+  "special": false,
+  "cands": [
+   {
+    "name": "Maria Cantwell",
+    "party": "DEM",
+    "pct": 59.1
+   },
+   {
+    "name": "Raul Garcia",
+    "party": "REP",
+    "pct": 40.6
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "West Virginia",
+  "special": true,
+  "cands": [
+   {
+    "name": "Jim Justice",
+    "party": "REP",
+    "pct": 68.8
+   },
+   {
+    "name": "Glenn Elliott",
+    "party": "DEM",
+    "pct": 27.3
+   },
+   {
+    "name": "David Moran",
+    "party": "LIB",
+    "pct": 4.0
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Wisconsin",
+  "special": false,
+  "cands": [
+   {
+    "name": "Tammy Baldwin",
+    "party": "DEM",
+    "pct": 49.3
+   },
+   {
+    "name": "Eric Hovde",
+    "party": "REP",
+    "pct": 48.5
+   },
+   {
+    "name": "Phil Anderson",
+    "party": "OTH",
+    "pct": 1.2
+   },
+   {
+    "name": "Thomas Leager",
+    "party": "OTH",
+    "pct": 0.9
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Sen-G",
+  "state": "Wyoming",
+  "special": false,
+  "cands": [
+   {
+    "name": "John Barrasso",
+    "party": "REP",
+    "pct": 75.1
+   },
+   {
+    "name": "Scott Morrow",
+    "party": "DEM",
+    "pct": 24.1
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "Delaware",
+  "special": false,
+  "cands": [
+   {
+    "name": "Matt Meyer",
+    "party": "DEM",
+    "pct": 56.1
+   },
+   {
+    "name": "Michael Ramone",
+    "party": "REP",
+    "pct": 43.9
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "Indiana",
+  "special": false,
+  "cands": [
+   {
+    "name": "Mike Braun",
+    "party": "REP",
+    "pct": 54.4
+   },
+   {
+    "name": "Jennifer McCormick",
+    "party": "DEM",
+    "pct": 41.1
+   },
+   {
+    "name": "Donald Rainwater",
+    "party": "LIB",
+    "pct": 4.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "Missouri",
+  "special": false,
+  "cands": [
+   {
+    "name": "Mike Kehoe",
+    "party": "REP",
+    "pct": 59.2
+   },
+   {
+    "name": "Crystal Quade",
+    "party": "DEM",
+    "pct": 38.7
+   },
+   {
+    "name": "Bill Slantz",
+    "party": "LIB",
+    "pct": 1.4
+   },
+   {
+    "name": "Paul Lehmann",
+    "party": "GRN",
+    "pct": 0.8
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "Montana",
+  "special": false,
+  "cands": [
+   {
+    "name": "Greg Gianforte",
+    "party": "REP",
+    "pct": 58.9
+   },
+   {
+    "name": "Ryan Busse",
+    "party": "DEM",
+    "pct": 38.6
+   },
+   {
+    "name": "Kaiser Leib",
+    "party": "LIB",
+    "pct": 2.5
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "New Hampshire",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kelly Ayotte",
+    "party": "REP",
+    "pct": 53.6
+   },
+   {
+    "name": "Joyce Craig",
+    "party": "DEM",
+    "pct": 44.3
+   },
+   {
+    "name": "Stephen Villee",
+    "party": "LIB",
+    "pct": 2.1
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "North Carolina",
+  "special": false,
+  "cands": [
+   {
+    "name": "Josh Stein",
+    "party": "DEM",
+    "pct": 54.9
+   },
+   {
+    "name": "Mark Robinson",
+    "party": "REP",
+    "pct": 40.1
+   },
+   {
+    "name": "Mike Ross",
+    "party": "LIB",
+    "pct": 3.2
+   },
+   {
+    "name": "Vinny Smith",
+    "party": "OTH",
+    "pct": 1.0
+   },
+   {
+    "name": "Wayne Turner",
+    "party": "GRN",
+    "pct": 0.9
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "North Dakota",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kelly Armstrong",
+    "party": "REP",
+    "pct": 68.4
+   },
+   {
+    "name": "Merrill Piepkorn",
+    "party": "DEM",
+    "pct": 26.0
+   },
+   {
+    "name": "Michael Coachman",
+    "party": "IND",
+    "pct": 5.6
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "Utah",
+  "special": false,
+  "cands": [
+   {
+    "name": "Spencer Cox",
+    "party": "REP",
+    "pct": 52.9
+   },
+   {
+    "name": "Brian King",
+    "party": "DEM",
+    "pct": 28.5
+   },
+   {
+    "name": "Phil Lyman",
+    "party": "OTH",
+    "pct": 13.4
+   },
+   {
+    "name": "Robert Latham",
+    "party": "LIB",
+    "pct": 2.8
+   },
+   {
+    "name": "Tommy Williams",
+    "party": "IND",
+    "pct": 1.9
+   },
+   {
+    "name": "Tom Tomeny",
+    "party": "IND",
+    "pct": 0.4
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "Vermont",
+  "special": false,
+  "cands": [
+   {
+    "name": "Phil Scott",
+    "party": "REP",
+    "pct": 73.4
+   },
+   {
+    "name": "Esther Charlestin",
+    "party": "DEM",
+    "pct": 21.8
+   },
+   {
+    "name": "Kevin Hoyt",
+    "party": "IND",
+    "pct": 2.6
+   },
+   {
+    "name": "June Goodband",
+    "party": "GRN",
+    "pct": 1.2
+   },
+   {
+    "name": "Eli Mutino",
+    "party": "IND",
+    "pct": 0.7
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "Washington",
+  "special": false,
+  "cands": [
+   {
+    "name": "Bob Ferguson",
+    "party": "DEM",
+    "pct": 55.7
+   },
+   {
+    "name": "Dave Reichert",
+    "party": "REP",
+    "pct": 44.3
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Gov-G",
+  "state": "West Virginia",
+  "special": false,
+  "cands": [
+   {
+    "name": "Patrick Morrisey",
+    "party": "REP",
+    "pct": 62.0
+   },
+   {
+    "name": "Steve Williams",
+    "party": "DEM",
+    "pct": 31.6
+   },
+   {
+    "name": "Erika Kolenich",
+    "party": "LIB",
+    "pct": 2.9
+   },
+   {
+    "name": "Marshall Wilson",
+    "party": "OTH",
+    "pct": 2.3
+   },
+   {
+    "name": "Chase Linko-Looper",
+    "party": "OTH",
+    "pct": 1.3
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Alabama",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 34.1
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 64.57
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Alaska",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 41.41
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 54.54
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Arizona",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 46.69
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 52.22
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Arkansas",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 33.56
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 64.2
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "California",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 58.47
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 38.33
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Colorado",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 54.13
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 43.14
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Connecticut",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 56.4
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 41.89
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Delaware",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 56.49
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 41.79
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "D.C.",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 90.28
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 6.47
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Florida",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 42.99
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 56.09
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Georgia",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 48.53
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 50.72
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Hawaii",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 60.59
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 37.48
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Idaho",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 30.38
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 66.87
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Illinois",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 54.37
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 43.47
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Indiana",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 39.62
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 58.58
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Iowa",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 42.52
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 55.73
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Kansas",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 41.04
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 57.16
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Kentucky",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 33.94
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 64.47
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Louisiana",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 38.21
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 60.22
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Maine",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 52.4
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 45.46
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Maryland",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 62.62
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 34.08
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Massachusetts",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 61.22
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 36.02
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Michigan",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 48.31
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 49.73
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Minnesota",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 50.92
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 46.68
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Mississippi",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 38.0
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 60.89
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Missouri",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 40.08
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 58.49
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Montana",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 38.46
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 58.39
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Nebraska",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 38.86
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 59.32
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Nevada",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 47.49
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 50.59
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "New Hampshire",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 50.65
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 47.87
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "New Jersey",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 51.97
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 46.06
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "New Mexico",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 51.85
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 45.85
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "New York",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 55.91
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 43.31
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "North Carolina",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 47.65
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 50.86
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "North Dakota",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 30.51
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 66.96
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Ohio",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 43.93
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 55.14
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Oklahoma",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 31.9
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 66.16
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Oregon",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 55.27
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 40.97
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Pennsylvania",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 48.66
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 50.37
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Rhode Island",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 55.54
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 41.76
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "South Carolina",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 40.36
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 58.23
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "South Dakota",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 34.24
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 63.43
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Tennessee",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 34.47
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 64.19
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Texas",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 42.46
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 56.14
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Utah",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 37.79
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 59.38
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Vermont",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 63.83
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 32.32
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Virginia",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 51.83
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 46.05
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Washington",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 57.23
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 39.01
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "West Virginia",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 28.1
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 69.97
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Wisconsin",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 48.74
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 49.6
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "Wyoming",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 25.84
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 71.6
+   }
+  ]
+ },
+ {
+  "cycle": 2024,
+  "type": "Pres-G",
+  "state": "US",
+  "special": false,
+  "cands": [
+   {
+    "name": "Kamala Harris",
+    "party": "DEM",
+    "pct": 48.32
+   },
+   {
+    "name": "Donald Trump",
+    "party": "REP",
+    "pct": 49.8
+   }
+  ]
+ }
+]
