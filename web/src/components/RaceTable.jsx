@@ -106,7 +106,7 @@ function Detail({ race, e, pollster, mode, id, labelledBy }) {
   return (
     <div className="rdetail" id={id} role="region" aria-labelledby={labelledBy}>
       <div>
-        <h3>{pollster.id === 'ALL' ? 'All non-partisan polls of this matchup' : `${shortName(pollster)} polls of this matchup`} ({list.length})</h3>
+        <h3>{pollster.id === 'ALL' ? 'All polls of this matchup' : `${shortName(pollster)} polls of this matchup`} ({list.length})</h3>
         {list.length === 0 ? (
           <p className="empty">
             {shortName(pollster)} has not published a general-election poll of {c1} vs. {c2}.
@@ -123,13 +123,17 @@ function Detail({ race, e, pollster, mode, id, labelledBy }) {
                 </tr>
               </thead>
               <tbody>
-                {list.slice(0, 12).map((p, i) => {
-                  const used = pollster.id === 'ALL' ? new Date(p.end + 'T00:00:00') >= recentCut : i < usedN
+                {list.slice(0, 15).map((p, i) => {
+                  const npIndex = list.slice(0, i + 1).filter((q) => !q.partisan).length - 1
+                  const used = !p.partisan && (pollster.id === 'ALL' ? new Date(p.end + 'T00:00:00') >= recentCut : npIndex < usedN)
                   const who = pollsterById[p.pid] ? shortName(pollsterById[p.pid]) : p.pollster_vh
                   return (
                     <tr key={i} className={used ? 'used' : ''}>
-                      <td>{fmtDate(p.start)}–{fmtDate(p.end)}{p.end.slice(0, 4) !== builtYear ? ` ’${p.end.slice(2, 4)}` : ''}</td>
-                      {pollster.id === 'ALL' && <td>{who}</td>}
+                      <td>
+                        {fmtDate(p.start)}–{fmtDate(p.end)}{p.end.slice(0, 4) !== builtYear ? ` ’${p.end.slice(2, 4)}` : ''}
+                        {p.partisan && <span className="flag" title="Sponsored by a campaign or an aligned group; listed but not used in estimates">{p.partisan === 'D' ? 'D sponsor' : p.partisan === 'R' ? 'R sponsor' : 'sponsored'}</span>}
+                      </td>
+                      {pollster.id === 'ALL' && <td>{who}{p.aff && <span className="pty"> ({p.aff})</span>}</td>}
                       <td className="n">{p.n ? `${fmtInt(p.n)} ${p.pop || ''}` : '—'}</td>
                       <td className="n">{p.pct1}</td><td className="n">{p.pct2}</td>
                       <td className="n">{fmtMargin(p.margin, race)}</td>
@@ -143,8 +147,9 @@ function Detail({ race, e, pollster, mode, id, labelledBy }) {
         )}
         {list.length > 0 && pollster.id !== 'ALL' && (
           <p className="note">
-            Highlighted rows feed the estimate: up to three polls finishing in the last {META.recent_days} days{e.est && e.est.stale ? ', or the latest poll when none is that fresh (flagged stale)' : ''}.
-            {others.length > 0 && ` ${others.length} other non-partisan ${others.length === 1 ? 'poll' : 'polls'} of this race not shown.`}
+            Highlighted rows feed the estimate: up to three non-partisan polls finishing in the last {META.recent_days} days{e.est && e.est.stale ? ', or the latest poll when none is that fresh (flagged stale)' : ''}.
+            {list.some((p) => p.partisan) && ' Polls with a sponsor tag are listed but never counted.'}
+            {others.length > 0 && ` ${others.length} other ${others.length === 1 ? 'poll' : 'polls'} of this race not shown.`}
           </p>
         )}
       </div>

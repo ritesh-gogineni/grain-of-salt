@@ -4,12 +4,13 @@ Steps
  1. Historical polls (2014-2022) from FiveThirtyEight's pollster-ratings archive.
  2. 2024 polls from the archived 538 poll files, joined to 2024 results.
  3. Per-pollster bias statistics (three weighting modes) + per-cycle breakdown.
- 4. 2026 Senate matchups: nominees from Wikipedia, polls from VoteHub.
+ 4. 2026 Senate matchups: nominees and polling tables from Wikipedia's per-state pages, topped up with VoteHub.
  5. Pollster selection (featured 5 + more) and final JSON.
 """
 import csv, json, os, re, sys, math, datetime, collections, unicodedata
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from wiki_tables import table_rows, find_tables, parse_candidates
+from wiki_polls import parse_state_polls
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 RAW = os.path.join(ROOT, 'data', 'raw')
@@ -41,7 +42,8 @@ STATE_ABBR = {'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR'
 
 def norm(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
-    return re.sub(r'[^a-z0-9]+', ' ', s.lower()).strip()
+    s = re.sub(r'[^a-z0-9]+', ' ', s.lower()).strip()
+    return re.sub(r'^the |,? (inc|llc)$', '', s).strip()
 
 
 def last(n):
@@ -263,8 +265,14 @@ ALIASES = {
     'university of new hampshire': '357', 'university of new hampshire survey center': '357',
     'beacon research shaw co research': '103', 'the new york times siena university': '448',
     'marist university': '183', 'glengariff group inc': '117', 'mitchell research communications': '213',
-    'cyngal': '67',
+    'cyngal': '67', 'new york times siena college': '448', 'new york times siena university': '448',
+    'beacon research shaw company research': '103', 'beacon research shaw co research': '103',
+    'saint anselm': '494', 'saint anselm college': '494', 'university of north florida': '360',
+    'stetson university': '730', 'umass lowell': '355', 'university of massachusetts lowell': '355',
+    'university of massachusetts lowell center for public opinion': '355', 'ut tyler': '458',
+    'university of houston': '351', 'rosetta stone': '751',
 }
+ALIASES = {norm(k): v for k, v in ALIASES.items()}
 for fname in ('senate_polls.2024.csv', 'president_polls.2024.csv', 'governor_polls.2024.csv'):
     for r in csv.DictReader(open(os.path.join(RAW, fname), encoding='utf-8')):
         norm_names.setdefault(norm(r['pollster_rating_name']), r['pollster_rating_id'])
@@ -272,20 +280,23 @@ for fname in ('senate_polls.2024.csv', 'president_polls.2024.csv', 'governor_pol
         names.setdefault(r['pollster_rating_id'], r['pollster_rating_name'])
 
 
-def resolve(vh_name):
-    n = norm(vh_name)
-    if n in ALIASES:
-        return ALIASES[n]
-    if n in norm_names:
-        return norm_names[n]
-    return 'VH:' + n
+def resolve(name, sponsors=()):
+    """Pollster name -> 538 rating id. Tries the full 'A/B' form first (joint pollsters like Beacon/Shaw,
+    NYT/Siena have their own ids), then the lead firm alone."""
+    for cand in ([name + '/' + '/'.join(sponsors)] if sponsors else []) + [name]:
+        n = norm(cand)
+        if n in ALIASES:
+            return ALIASES[n]
+        if n in norm_names:
+            return norm_names[n]
+    return 'VH:' + norm(name)
 
 
 vh = json.load(open(os.path.join(RAW, 'votehub_senate.json'), encoding='utf-8'))
-polls26 = [p for p in vh if p['subject'] and p['subject'].startswith('2026 ')
-           and not any(k in p['subject'] for k in ('Democratic', 'Republican', '-'))
-           and not p['internal'] and not p['partisan']]
-print('2026 general non-partisan polls:', len(polls26))
+polls26 = [dict(p, src='vh') for p in vh if p['subject'] and p['subject'].startswith('2026 ')
+           and not any(k in p['subject'] for k in ('Democratic', 'Republican', '-')) and not p['internal']]
+print('VoteHub 2026 general-election polls:', len(polls26),
+      '(partisan-sponsored:', sum(1 for p in polls26 if p['partisan']), ')')
 
 STATE_ORDER = ['Alabama', 'Alaska', 'Arkansas', 'Colorado', 'Delaware', 'Florida (special)', 'Georgia', 'Idaho',
                'Illinois', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Massachusetts', 'Michigan',
@@ -333,6 +344,30 @@ def match_choice(choice, cands):
     return best[1] if best else None
 
 
+# Wikipedia per-state polling tables: the main 2026 source. VoteHub fills in what Wikipedia lacks.
+wiki26 = {}
+for key in STATE_ORDER:
+    fn = os.path.join(RAW, 'wiki2026', key.replace(' (special)', '_special').replace(' ', '_') + '.html')
+    if os.path.exists(fn):
+        wiki26[key] = parse_state_polls(open(fn, encoding='utf-8').read(), '2026 ' + key.replace(' (special)', ''))
+    else:
+        print('  missing Wikipedia page for', key)
+        wiki26[key] = []
+print('Wikipedia 2026 poll rows parsed:', sum(len(v) for v in wiki26.values()))
+
+
+def same_poll(a, b):
+    """Same pollster (by id, or by first word of the name) and the same field dates; or the same end date
+    and the same numbers within rounding when one source lacks a start date."""
+    if a['end'] != b['end']:
+        return False
+    if not (a['pid'] == b['pid'] or norm(a['pollster_vh']).split()[:1] == norm(b['pollster_vh']).split()[:1]):
+        return False
+    if a['start'] and b['start']:
+        return a['start'] == b['start']      # one release, possibly two question versions (with / without leaners)
+    return abs(a['pct1'] - b['pct1']) <= 1.5 and abs(a['pct2'] - b['pct2']) <= 1.5
+
+
 races = []
 unmatched = collections.Counter()
 cut120 = (TODAY - datetime.timedelta(days=120)).isoformat()
@@ -344,7 +379,7 @@ for key in STATE_ORDER:
         for c in cands:
             if 'Sullivan' in c['name']:
                 c['name'] = 'Dan Sullivan'
-    sp = [p for p in polls26 if p['subject'] == '2026 ' + state]
+    sp = wiki26[key] + [p for p in polls26 if p['subject'] == '2026 ' + state]
     parsed = []
     for p in sp:
         pairs = []
@@ -354,13 +389,18 @@ for key in STATE_ORDER:
                 pairs.append((c, a['pct']))
             else:
                 unmatched[(state, a['choice'])] += 1
+        if p['partisan'] == 'UNK':
+            # "which supports Paxton" / "Talarico's campaign": take the side of the candidate the note names
+            note = p.get('sponsor_note') or ''
+            named = [c for c in cands if last(c['name']) and re.search(r'' + re.escape(last(c['name'])), note, re.I)]
+            p['partisan'] = named[0]['party'] if named and named[0]['party'] in ('DEM', 'REP') else 'UNK'
         parsed.append((p, pairs))
     rep = [c for c in cands if c['party'] == 'REP']
     nonrep = [c for c in cands if c['party'] != 'REP']
     # matchup: the Republican nominee vs the strongest non-Republican in polls from the last 120 days
     perf = collections.defaultdict(list)
     for p, pairs in parsed:
-        if p['end_date'] < cut120:
+        if p['end_date'] < cut120 or p['partisan']:
             continue
         for c, pct in pairs:
             if c['party'] != 'REP':
@@ -377,25 +417,57 @@ for key in STATE_ORDER:
              else (rep[0] if rep else None))
     plist = []
     for p, pairs in parsed:
-        d = {c['name']: pct for c, pct in pairs}
+        d = {}
+        for c, pct in pairs:          # two columns can map to one nominee (Alaska's two Sullivans): the nominee is the bigger number
+            d[c['name']] = max(d.get(c['name'], -1), pct)
         n1 = cand1['name'] if cand1 else None
         n2 = cand2['name'] if cand2 else None
         if n1 in d and n2 in d:
-            plist.append({'pollster_vh': p['pollster'], 'pid': resolve(p['pollster']), 'start': p['start_date'],
+            plist.append({'pollster_vh': p['pollster'], 'pid': resolve(p['pollster'], p['sponsors'] if p['src'] == 'wiki' else ()), 'start': p['start_date'],
                           'end': p['end_date'], 'n': p['sample_size'], 'pop': p['population'],
                           'pct1': d[n1], 'pct2': d[n2], 'margin': round(d[n1] - d[n2], 1),
-                          'url': p['url'], 'sponsors': p['sponsors']})
+                          'url': p['url'], 'sponsors': p['sponsors'],
+                          'partisan': p['partisan'][0] if p['partisan'] else None, 'aff': p.get('aff'), 'src': p['src']})
+    # drop VoteHub rows that Wikipedia already has; keep VoteHub's link / sample when Wikipedia lacks one
+    wiki_rows = [x for x in plist if x['src'] == 'wiki']
+    merged = []
+    for x in plist:
+        dup = next((w for w in wiki_rows if same_poll(w, x)), None) if x['src'] == 'vh' else None
+        if dup:
+            for f in ('url', 'n', 'pop'):
+                dup[f] = dup[f] or x[f]
+            if dup['pid'].startswith('VH:') or (not x['pid'].startswith('VH:') and dup['pid'] != x['pid']):
+                dup['pid'], dup['pollster_vh'] = x['pid'], x['pollster_vh']   # VoteHub's name maps more reliably
+            dup['partisan'] = x['partisan'] or dup['partisan']   # VoteHub tracks sponsors explicitly
+            dup['src'] = 'both'
+            continue
+        merged.append(x)
+    # one release per pollster and field period: Wikipedia repeats a poll in several tables (with / without
+    # third candidates, with / without leaners); keep the first table's version
+    seen_rel, plist = set(), []
+    for x in merged:
+        k = (x['pid'], x['start'], x['end'])
+        if k in seen_rel:
+            continue
+        seen_rel.add(k)
+        plist.append(x)
     plist.sort(key=lambda x: x['end'], reverse=True)
     races.append({'key': key, 'state': state, 'abbr': ABBR[state], 'special': '(special)' in key,
                   'held': HELD[key], 'incumbent': INCUMBENT[key], 'cand1': cand1, 'cand2': cand2,
                   'ratings': ratings.get(key, {}), 'polls': plist})
 print('unmatched choices (top):', unmatched.most_common(12))
+all26 = [p for r in races for p in r['polls']]
+np26 = [p for p in all26 if not p['partisan']]
+print('2026 matchup polls:', len(all26), 'non-partisan:', len(np26),
+      'by source:', dict(collections.Counter(p['src'] for p in all26)))
+print('races with no polls:', [r['key'] for r in races if not r['polls']])
 
 recent_cut = (TODAY - datetime.timedelta(days=RECENT_DAYS)).isoformat()
 
 
 def estimate(polls):
-    """Average of up to 3 most-recent polls inside the window; else the latest poll, flagged stale."""
+    """Average of up to 3 most-recent non-partisan polls inside the window; else the latest, flagged stale."""
+    polls = [p for p in polls if not p['partisan']]
     if not polls:
         return None
     recent = [p for p in polls if p['end'] >= recent_cut][:3]
@@ -408,7 +480,8 @@ def estimate(polls):
 for race in races:
     byp = collections.defaultdict(list)
     for p in race['polls']:
-        byp[p['pid']].append(p)
+        if not p['partisan']:
+            byp[p['pid']].append(p)
     race['by_pollster'] = {pid: estimate(ps) for pid, ps in byp.items()}
     latest = [ps[0]['margin'] for ps in byp.values() if ps[0]['end'] >= recent_cut]
     race['consensus'] = ({'margin': round(sum(latest) / len(latest), 1), 'n_pollsters': len(latest)}
@@ -422,6 +495,8 @@ volume = collections.Counter()
 vh_names = collections.defaultdict(collections.Counter)
 for race in races:
     for p in race['polls']:
+        if p['partisan']:
+            continue
         coverage[p['pid']].add(race['key'])
         volume[p['pid']] += 1
         vh_names[p['pid']][p['pollster_vh']] += 1
@@ -471,11 +546,13 @@ out = {
     'meta': {'built': TODAY.isoformat(), 'election_date': '2026-11-03', 'first_cycle': FIRST_CYCLE,
              'latest_cycle': LATEST, 'decay': DECAY, 'shrink_k': SHRINK_K, 'max_days_out': MAX_DAYS_OUT,
              'recent_days': RECENT_DAYS, 'min_hist': MIN_HIST, 'state_k': STATE_K,
-             'hist_polls': len(hist), 'polls_2026': len(polls26),
+             'hist_polls': len(hist), 'polls_2026': len(all26), 'polls_2026_np': len(np26),
+             'polls_2026_partisan': len(all26) - len(np26),
              'seats_not_up': {'D': 34, 'R': 31},
              'sources': {'history': 'https://github.com/fivethirtyeight/data/tree/master/pollster-ratings',
                          'polls_2024': 'https://web.archive.org/web/20241106id_/https://projects.fivethirtyeight.com/polls/data/',
-                         'polls_2026': 'https://votehub.com/polls/api/',
+                         'polls_2026': 'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',
+                         'polls_2026_vh': 'https://votehub.com/polls/api/',
                          'nominees': 'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections'}},
     'pollsters': pollsters,
     'excluded': excluded,

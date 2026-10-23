@@ -71,16 +71,18 @@ export default function Method({ pollster }) {
       <ul>
         <li>Fielded within the final <b>{META.max_days_out} days</b> before the election. Earlier polls measure a different moment, not pollster skill.</li>
         <li>Two-party races only: a Democrat and a Republican as the top two finishers. Independents and same-party runoffs are excluded from grading, because “overstated the Democrat” has no meaning there.</li>
-        <li>No internal or partisan-sponsored polls, in either the history or the 2026 data.</li>
+        <li>No internal or partisan-sponsored polls in the history. In 2026, sponsored polls are listed with a tag for completeness but never feed an estimate.</li>
         <li>Odd-year special elections dropped; they are rare and noisy.</li>
       </ul>
       <p>That leaves <b>{fmtInt(META.hist_polls)}</b> graded polls across {years.length} cycles.</p>
       <h3>2026</h3>
       <p>
-        Current Senate polls come from the <a href={META.sources.polls_2026}>VoteHub polling API</a>, which is free and licensed
-        CC&nbsp;BY&nbsp;4.0. As of {fmtLongDate(META.built)} it holds {META.polls_2026} non-partisan general-election polls of the 35 Senate races.
-        Nominees and the consensus race ratings come from <a href={META.sources.nominees}>Wikipedia</a>. Nothing here is edited by hand;
-        a script rebuilds the whole site from these sources.
+        Current Senate polls are read from the polling tables on <a href={META.sources.polls_2026}>Wikipedia’s per-state election pages</a>,
+        the most complete public list, then topped up with anything the <a href={META.sources.polls_2026_vh}>VoteHub polling API</a> (CC&nbsp;BY&nbsp;4.0)
+        has that Wikipedia lacks. As of {fmtLongDate(META.built)} that is {fmtInt(META.polls_2026)} polls of the 35 nominee matchups,
+        {fmtInt(META.polls_2026_np)} of them non-partisan. A poll counts only if it tested the two actual nominees; primaries and hypothetical
+        matchups are ignored. Nominees and the consensus race ratings come from <a href={META.sources.nominees}>Wikipedia</a> too. Nothing here is
+        edited by hand; a script rebuilds the whole site from these sources.
       </p>
 
       <h2 id="m-bias">Bias is not error</h2>

@@ -1,7 +1,7 @@
 """Download every raw input into data/raw/. Safe to re-run; it overwrites.
 
   python pipeline/fetch.py            # everything
-  python pipeline/fetch.py --2026     # only the fast-changing 2026 inputs (VoteHub + Wikipedia overview)
+  python pipeline/fetch.py --2026     # only the fast-changing 2026 inputs (Wikipedia overview + 35 state pages, VoteHub)
 """
 import os, sys, time, urllib.request
 
@@ -25,6 +25,16 @@ CURRENT = {
     'votehub_senate.json': 'https://api.votehub.com/polls?poll_type=us-senator',
     'wiki_2026_senate.html': WIKI + '2026_United_States_Senate_elections',
 }
+# Per-state pages: their polling tables are the main 2026 poll source (VoteHub is the supplement).
+STATES_2026 = ['Alabama', 'Alaska', 'Arkansas', 'Colorado', 'Delaware', 'Georgia', 'Idaho', 'Illinois', 'Iowa',
+               'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+               'Montana', 'Nebraska', 'New Hampshire', 'New Jersey', 'New Mexico', 'North Carolina', 'Oklahoma',
+               'Oregon', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Virginia',
+               'West Virginia', 'Wyoming']
+for _s in STATES_2026:
+    CURRENT[f'wiki2026/{_s.replace(" ", "_")}.html'] = WIKI + f'2026_United_States_Senate_election_in_{_s.replace(" ", "_")}'
+for _s in ('Florida', 'Ohio'):
+    CURRENT[f'wiki2026/{_s}_special.html'] = WIKI + f'2026_United_States_Senate_special_election_in_{_s}'
 
 
 def get(url, dest):
