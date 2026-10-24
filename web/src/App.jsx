@@ -5,6 +5,7 @@ import Tally from './components/Tally.jsx'
 import RaceTable from './components/RaceTable.jsx'
 import ReportCard from './components/ReportCard.jsx'
 import Method from './components/Method.jsx'
+import HeroCard from './components/HeroCard.jsx'
 
 const DARK_BG = '#0b1326', LIGHT_BG = '#ffffff'
 const raceKeys = new Set(DATA.races.map((r) => r.key))
@@ -152,13 +153,16 @@ export default function App() {
       ) : (
         <main id="main" ref={mainRef} tabIndex={-1} className="main">
           <section className="hero">
-            <p className="kicker reveal">Senate 2026 · {DATA.races.length} races · polls through {fmtLongDate(META.built)}</p>
-            <h1 className="reveal">Every pollster misses. <em>Subtract the miss.</em></h1>
-            <p className="reveal">
-              Pick a pollster. See what their 2026 Senate polls say, then see the same numbers with that pollster’s
-              historical error taken out, measured against {fmtInt(META.hist_polls)} of their past polls and
-              the results that followed. <a href={methodHref}>How it works</a>.
-            </p>
+            <div className="hero-text">
+              <p className="kicker reveal">Senate 2026 · {DATA.races.length} races · polls through {fmtLongDate(META.built)}</p>
+              <h1 className="reveal">Every pollster misses. <em>Subtract the miss.</em></h1>
+              <p className="reveal">
+                Pick a pollster. See what their 2026 Senate polls say, then see the same numbers with that pollster’s
+                historical error taken out, measured against {fmtInt(META.hist_polls)} of their past polls and
+                the results that followed. <a href={methodHref}>How it works</a>.
+              </p>
+            </div>
+            <HeroCard t={t} pollster={pollster} mode={mode} scope={scope} rows={rows} />
           </section>
 
           <section className="section" id="pick" aria-labelledby="h-pick">
