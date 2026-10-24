@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { FEATURED, OTHERS, POOLED, statFor, fmtBias, shortName } from '../model.js'
+import { DATA, FEATURED, OTHERS, POOLED, statFor, fmtBias, shortName } from '../model.js'
 
 function BiasBadge({ p, mode }) {
   const s = statFor(p, mode)
   const cls = Math.abs(s.bias) < 0.5 ? 'N' : s.bias > 0 ? 'D' : 'R'
-  const word = cls === 'N' ? 'about even' : cls === 'D' ? 'overstates D' : 'overstates R'
+  const word = cls === 'N' ? 'about even' : cls === 'D' ? 'too Democratic' : 'too Republican'
   return (
     <span className={`badge ${cls}`}>
-      <span className="sr-only">Average signed miss over {s.n} polls: </span>{fmtBias(s.bias)} <span className="w">{word}</span>
+      <span className="sr-only">Usual miss over {s.n} polls: </span>{fmtBias(s.bias)} <span className="w">{word}</span>
     </span>
   )
 }
@@ -22,13 +22,13 @@ export default function Picker({ pollsterId, setPollsterId, mode }) {
             aria-pressed={pollsterId === p.id} onClick={() => setPollsterId(p.id)}>
             <span className="name">{shortName(p)}</span>
             <BiasBadge p={p} mode={mode} />
-            <span className="meta">{p.states_2026.length} races polled · {p.hist_n} past polls graded</span>
+            <span className="meta">{p.states_2026.length} of {DATA.races.length} races polled</span>
           </button>
         ))}
       </div>
       <div className="more">
         <button type="button" className="more-toggle" onClick={() => setMore((m) => !m)} aria-expanded={more} aria-controls="more-pollsters">
-          {more ? 'Hide Other Pollsters' : `More Pollsters (${OTHERS.length + 1})`}
+          {more ? 'Hide other pollsters' : `More pollsters (${OTHERS.length + 1})`}
         </button>
         {more && (
           <div id="more-pollsters" className="more" role="group" aria-label="Other pollsters" style={{ marginTop: 0 }}>

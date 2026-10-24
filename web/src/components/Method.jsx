@@ -103,8 +103,8 @@ export default function Method({ pollster }) {
       </div>
       <p>
         A positive bias means the pollster overstated Democrats. We write it as “D+2.5” on the site, meaning their
-        margins ran 2.5 points too Democratic. Throughout the site we also show the <b>scatter</b> (standard deviation of the
-        misses around the bias) as a shaded band. A corrected lead that sits inside that band is a toss-up in all but name.
+        margins ran 2.5 points too Democratic. We also show the <b>scatter</b> (standard deviation of the misses around the
+        bias) as a ± figure. A corrected lead smaller than the scatter is a toss-up in all but name.
       </p>
       <h3>The gap, year by year, for every pollster pooled</h3>
       <p>
@@ -116,7 +116,7 @@ export default function Method({ pollster }) {
       <p>
         Read 2020 as: across {POOLED.cycles.find((c) => c.cycle === 2020).n} polls, pollsters said the Democrat led by about {Math.abs(POOLED.cycles.find((c) => c.cycle === 2020).poll_avg).toFixed(1)} points on average,
         and the results came in at roughly {signed(POOLED.cycles.find((c) => c.cycle === 2020).actual_avg)}. Polls were {Math.abs(POOLED.cycles.find((c) => c.cycle === 2020).bias).toFixed(1)} points too
-        Democratic. The same table for any single pollster is on the main page, under “Where the correction comes from”.
+        Democratic. The same table for any single pollster is on the <a href="#/record">Track Record</a> page.
       </p>
 
       <h2 id="m-weights">Weighting the past</h2>
@@ -232,8 +232,7 @@ export default function Method({ pollster }) {
       <p>
         {META.seats_not_up.D} seats held by Democrats and independents and {META.seats_not_up.R} held by Republicans are not on the 2026 ballot.
         Each of the 35 contested races is awarded to whichever side leads the (raw or corrected) margin, with ties going to the
-        party that holds the seat. A race inside three points is also counted as a toss-up and striped in the seat strip, so you can see
-        how much of a majority rests on coin flips. Republicans control a 50–50 Senate through the vice president, so Democrats need 51.
+        party that holds the seat. A race inside three points is labelled a toss-up in the race list. Republicans control a 50–50 Senate through the vice president, so Democrats need 51.
       </p>
 
       <h2 id="m-pollsters">Which pollsters, and why</h2>
@@ -273,14 +272,14 @@ export default function Method({ pollster }) {
         <dt>Miss</dt><dd>Poll margin minus actual margin for one historical poll. Positive means the poll overstated the Democrat.</dd>
         <dt>Bias (or “the miss” on the site)</dt><dd>The weighted, shrunk average of a pollster’s misses. This is what gets subtracted.</dd>
         <dt>State correction</dt><dd>The pollster's miss in one state, blended toward their overall miss with {META.state_k} polls’ weight. The default.</dd>
-        <dt>Scatter</dt><dd>Standard deviation of the misses around the bias. Shown as ± on report cards and as the shaded band on each race.</dd>
+        <dt>Scatter</dt><dd>Standard deviation of the misses around the bias. Shown as ± on the Track Record page and in each race’s explanation.</dd>
         <dt>Corrected</dt><dd>Raw margin minus bias.</dd>
         <dt>Stale</dt><dd>A pollster's only poll of a race is older than {META.recent_days} days.</dd>
         <dt>Toss-up / Lean / Likely / Safe</dt><dd>Corrected margin under 3 / 3 to 6 / 6 to 10 / 10 or more points. Labels, not probabilities.</dd>
         <dt>Flip</dt><dd>The corrected leader is not the party that holds the seat today.</dd>
         <dt>Changed</dt><dd>The correction moved the lead from one side to the other.</dd>
       </dl>
-      <p className="back"><a href="#/">Back to the Senate map</a></p>
+      <p className="back"><a href="#/">Back to the Senate</a></p>
     </article>
   )
 }

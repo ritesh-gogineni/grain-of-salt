@@ -1,24 +1,25 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { DATA, META, MODES, SCOPES, FEATURED, pollsterById, allEstimates, tally, fmtInt, fmtLongDate, raceSlug } from './model.js'
+import { DATA, META, MODES, SCOPES, FEATURED, pollsterById, allEstimates, tally, fmtLongDate, raceSlug } from './model.js'
 import Picker from './components/Picker.jsx'
 import Tally from './components/Tally.jsx'
 import RaceTable from './components/RaceTable.jsx'
-import ReportCard from './components/ReportCard.jsx'
+import Record from './components/Record.jsx'
 import Method from './components/Method.jsx'
-import HeroCard from './components/HeroCard.jsx'
 
 const DARK_BG = '#0b1326', LIGHT_BG = '#ffffff'
 const raceKeys = new Set(DATA.races.map((r) => r.key))
+const PAGES = new Set(['home', 'record', 'method'])
 
-/* URL shape: #/[method[/section]]?p=<pollster>&m=<mode>&s=<scope>&r=<open race>&f=polled */
+/* URL shape: #/[record | method[/section]]?p=<pollster>&m=<mode>&s=<scope>&r=<open race>&f=polled */
 function readHash() {
   const h = window.location.hash.replace(/^#\/?/, '')
   const [path, qs] = h.split('?')
   const q = new URLSearchParams(qs || '')
   const [root, section] = path.split('/')
+  const page = PAGES.has(root) ? root : 'home'
   return {
-    page: root === 'method' ? 'method' : 'home',
-    section: root === 'method' && section ? section : null,
+    page,
+    section: page === 'method' && section ? section : null,
     p: q.get('p'), m: q.get('m'), s: q.get('s'), r: q.get('r'), f: q.get('f'),
   }
 }
@@ -31,7 +32,7 @@ function buildHash({ page, section, p, m, s, r, f }) {
   if (page === 'home' && r) qs.set('r', r)
   if (page === 'home' && f) qs.set('f', 'polled')
   const q = qs.toString()
-  const path = page === 'method' ? `method${section ? '/' + section : ''}` : ''
+  const path = page === 'method' ? `method${section ? '/' + section : ''}` : page === 'record' ? 'record' : ''
   return `#/${path}${q ? '?' + q : ''}`
 }
 
@@ -125,12 +126,14 @@ export default function App() {
 
   const common = { p: pollsterId, m: mode, s: scope, r: openRace, f: onlyPolled }
   const homeHref = buildHash({ page: 'home', ...common })
+  const recordHref = buildHash({ page: 'record', ...common })
   const methodHref = buildHash({ page: 'method', ...common })
   const skipToMain = (e) => {
     e.preventDefault()
     const el = mainRef.current
     if (el) { el.focus({ preventScroll: true }); el.scrollIntoView({ block: 'start' }) }
   }
+  const nonDefault = mode !== 'recency' || scope !== 'state'
 
   return (
     <div className="wrap">
@@ -139,7 +142,8 @@ export default function App() {
         <a className="brand" href={homeHref} translate="no"><span className="grain" aria-hidden="true" />Grain&nbsp;of&nbsp;Salt</a>
         <nav className="nav" aria-label="Site">
           <a href={homeHref} aria-current={page === 'home' ? 'page' : undefined}>Senate&nbsp;2026</a>
-          <a href={methodHref} aria-current={page === 'method' ? 'page' : undefined}>How It Works</a>
+          <a href={recordHref} aria-current={page === 'record' ? 'page' : undefined}>Track&nbsp;Record</a>
+          <a href={methodHref} aria-current={page === 'method' ? 'page' : undefined}>How&nbsp;It&nbsp;Works</a>
           <button type="button" className="theme" onClick={() => setTheme(isDark ? 'light' : 'dark')} aria-pressed={isDark} aria-label="Dark mode">
             <span aria-hidden="true">◐</span>
           </button>
@@ -150,79 +154,70 @@ export default function App() {
         <div id="main" ref={mainRef} tabIndex={-1} className="main">
           <Method pollster={pollster} mode={mode} scope={scope} />
         </div>
+      ) : page === 'record' ? (
+        <main id="main" ref={mainRef} tabIndex={-1} className="main">
+          <Record pollster={pollster} setPollsterId={setPollsterId} mode={mode} scope={scope} homeHref={homeHref} />
+        </main>
       ) : (
         <main id="main" ref={mainRef} tabIndex={-1} className="main">
           <section className="hero">
-            <div className="hero-text">
-              <p className="kicker reveal">Senate 2026 · {DATA.races.length} races · polls through {fmtLongDate(META.built)}</p>
-              <h1 className="reveal">Every pollster misses. <em>Subtract the miss.</em></h1>
-              <p className="reveal">
-                Pick a pollster. See what their 2026 Senate polls say, then see the same numbers with that pollster’s
-                historical error taken out, measured against {fmtInt(META.hist_polls)} of their past polls and
-                the results that followed. <a href={methodHref}>How it works</a>.
-              </p>
-            </div>
-            <HeroCard t={t} pollster={pollster} mode={mode} scope={scope} rows={rows} />
+            <p className="kicker reveal">Senate 2026 · polls through {fmtLongDate(META.built)}</p>
+            <h1 className="reveal">Every pollster misses. <em>Subtract the miss.</em></h1>
+            <p className="reveal">
+              Pick a pollster. See what their 2026 Senate polls say, then the same numbers with that pollster’s
+              usual error taken out. <a href={methodHref}>How it works</a>.
+            </p>
           </section>
 
           <section className="section" id="pick" aria-labelledby="h-pick">
             <div className="section-head">
-              <h2 id="h-pick"><span className="step" aria-hidden="true">01</span>Choose a pollster</h2>
-              <span className="sub">Ranked by how many 2026 Senate races they have polled</span>
+              <h2 id="h-pick"><span className="step" aria-hidden="true">1</span>Pick a pollster</h2>
             </div>
             <Picker pollsterId={pollsterId} setPollsterId={setPollsterId} mode={mode} />
-            <div className="controls">
-              <span id="lbl-mode">Measure the miss as</span>
-              <div className="seg" role="group" aria-labelledby="lbl-mode">
-                {MODES.map((m) => (
-                  <button key={m.id} type="button" aria-pressed={mode === m.id} onClick={() => setMode(m.id)}>{m.label}</button>
-                ))}
+            <details className="advanced" open={nonDefault || undefined}>
+              <summary>Advanced: how the miss is measured{nonDefault ? ' (changed)' : ''}</summary>
+              <div className="controls">
+                <span id="lbl-mode">Weight past elections</span>
+                <div className="seg" role="group" aria-labelledby="lbl-mode">
+                  {MODES.map((m) => (
+                    <button key={m.id} type="button" aria-pressed={mode === m.id} onClick={() => setMode(m.id)}>{m.label}</button>
+                  ))}
+                </div>
+                <span className="hint">{MODES.find((m) => m.id === mode).hint}</span>
               </div>
-              <span className="hint">{MODES.find((m) => m.id === mode).hint}</span>
-            </div>
-            <div className="controls tight">
-              <span id="lbl-scope">Apply the correction</span>
-              <div className="seg" role="group" aria-labelledby="lbl-scope">
-                {SCOPES.map((s) => (
-                  <button key={s.id} type="button" aria-pressed={scope === s.id} onClick={() => setScope(s.id)}>{s.label}</button>
-                ))}
+              <div className="controls tight">
+                <span id="lbl-scope">Apply the correction</span>
+                <div className="seg" role="group" aria-labelledby="lbl-scope">
+                  {SCOPES.map((s) => (
+                    <button key={s.id} type="button" aria-pressed={scope === s.id} onClick={() => setScope(s.id)}>{s.label}</button>
+                  ))}
+                </div>
+                <span className="hint">{SCOPES.find((s) => s.id === scope).hint}</span>
               </div>
-              <span className="hint">{SCOPES.find((s) => s.id === scope).hint}</span>
-            </div>
+            </details>
           </section>
 
           <section className="section" id="tally" aria-labelledby="h-tally">
             <div className="section-head">
-              <h2 id="h-tally"><span className="step" aria-hidden="true">02</span>The Senate, before and after</h2>
-              <span className="sub">{META.seats_not_up.D} D-held and {META.seats_not_up.R} R-held seats are not on the ballot</span>
+              <h2 id="h-tally"><span className="step" aria-hidden="true">2</span>The Senate, before and after</h2>
             </div>
-            <Tally t={t} pollster={pollster} mode={mode} scope={scope} rows={rows} />
+            <Tally t={t} pollster={pollster} mode={mode} scope={scope} rows={rows} recordHref={recordHref} />
           </section>
 
           <section className="section" id="races" aria-labelledby="h-races">
             <div className="section-head">
-              <h2 id="h-races"><span className="step" aria-hidden="true">03</span>Race by race</h2>
-              <span className="sub">Most competitive first · open a row for the polls behind it</span>
+              <h2 id="h-races"><span className="step" aria-hidden="true">3</span>Race by race</h2>
+              <span className="sub">Closest races first</span>
             </div>
-            <RaceTable rows={rows} pollster={pollster} mode={mode} scope={scope}
-              openRace={openRace} setOpenRace={setOpenRace} onlyPolled={onlyPolled} setOnlyPolled={setOnlyPolled} />
-          </section>
-
-          <section className="section" id="report" aria-labelledby="h-report">
-            <div className="section-head">
-              <h2 id="h-report"><span className="step" aria-hidden="true">04</span>Where the correction comes from</h2>
-              <span className="sub">Final-three-week polls vs. certified results, {META.first_cycle}–{META.latest_cycle}</span>
-            </div>
-            <ReportCard pollster={pollster} mode={mode} scope={scope} />
+            <RaceTable rows={rows} pollster={pollster} openRace={openRace} setOpenRace={setOpenRace} onlyPolled={onlyPolled} setOnlyPolled={setOnlyPolled} />
           </section>
         </main>
       )}
 
       <footer>
-        <span><span translate="no">Grain&nbsp;of&nbsp;Salt</span> · built {fmtLongDate(META.built)}. Not a forecast. A mirror held up to one pollster at a time.</span>
+        <span><span translate="no">Grain&nbsp;of&nbsp;Salt</span> · built {fmtLongDate(META.built)}. Not a forecast; arithmetic on public polls.</span>
         <span>
-          History: <a href={META.sources.history}>FiveThirtyEight archive</a> · 2026 polls: <a href={META.sources.polls_2026}>VoteHub</a> (CC&nbsp;BY&nbsp;4.0) ·
-          Nominees &amp; ratings: <a href={META.sources.nominees}>Wikipedia</a>
+          Sources: <a href={META.sources.history}>FiveThirtyEight archive</a> · <a href={META.sources.polls_2026}>Wikipedia</a> · <a href={META.sources.polls_2026_vh}>VoteHub</a>
         </span>
       </footer>
     </div>
